@@ -55,7 +55,7 @@ def prepare_arg(value):
     if isinstance(value, (list, dict)) or hasattr(value, 'to_python'):
         return json.dumps(_normalize(value))
     if isinstance(value, datetime.timedelta):
-        now = datetime.datetime.now()
+        now = datetime.datetime.utcnow()
         return int((now + value).timestamp())
     if isinstance(value, datetime.datetime):
         return round(value.timestamp())
